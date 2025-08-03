@@ -5,7 +5,6 @@ import {
   IsOptional,
   IsDateString,
   IsEnum,
-  IsUUID,
 } from 'class-validator';
 import { UserStatus, Gender } from '../enum/user.enum';
 
@@ -42,10 +41,6 @@ export class CreateUserDto {
   @IsString()
   @IsOptional()
   bio?: string;
-
-  @IsUUID()
-  @IsOptional()
-  organizationId?: string;
 
   @IsEnum(UserStatus)
   @IsOptional()

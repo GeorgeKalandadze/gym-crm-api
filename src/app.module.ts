@@ -23,7 +23,6 @@ import { UsersModule } from './users/users.module';
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         migrations: [__dirname + '/../db/migrations/*{.ts,.js}'],
         migrationsTableName: 'migrations',
-        synchronize: false,
         logging: configService.get<string>('NODE_ENV') === 'development',
         migrationsRun: false,
       }),

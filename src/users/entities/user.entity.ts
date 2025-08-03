@@ -1,4 +1,3 @@
-import { Organization } from '../../organizations/entities/organization.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -6,8 +5,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  ManyToOne,
-  JoinColumn,
 } from 'typeorm';
 import { UserStatus } from '../enum/user.enum';
 
@@ -42,13 +39,6 @@ export class User {
 
   @Column({ type: 'text', nullable: true })
   bio: string;
-
-  @Column({ type: 'uuid', nullable: true })
-  organizationId: string;
-
-  @ManyToOne(() => Organization)
-  @JoinColumn({ name: 'organizationId' })
-  organization: Organization;
 
   @Column({
     type: 'enum',
