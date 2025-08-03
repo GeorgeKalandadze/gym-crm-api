@@ -4,3 +4,8 @@ export enum UserStatus {
   SUSPENDED = 'suspended',
   PENDING = 'pending',
 }
+
+export enum Gender {
+  MALE = 'male',
+  FEMALE = 'female',
+}
