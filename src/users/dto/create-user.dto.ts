@@ -1,48 +1,63 @@
 import {
   IsEmail,
+  IsNotEmpty,
+  IsOptional,
   IsString,
   MinLength,
-  IsOptional,
   IsDateString,
   IsEnum,
+  MaxLength,
 } from 'class-validator';
-import { UserStatus, Gender } from '../enum/user.enum';
+import { Transform } from 'class-transformer';
+import { UserStatus } from '../enum/user.enum';
 
 export class CreateUserDto {
+  @IsNotEmpty()
   @IsString()
+  @MaxLength(100)
   firstName: string;
 
+  @IsNotEmpty()
   @IsString()
+  @MaxLength(100)
   lastName: string;
 
   @IsEmail()
+  @IsNotEmpty()
+  @MaxLength(255)
   email: string;
 
-  @IsString()
   @IsOptional()
+  @IsString()
+  @MaxLength(255)
   username?: string;
 
+  @IsNotEmpty()
   @IsString()
   @MinLength(6)
+  @MaxLength(255)
   password: string;
 
-  @IsString()
   @IsOptional()
+  @IsString()
+  @MaxLength(20)
   phone?: string;
 
-  @IsDateString()
   @IsOptional()
+  @IsDateString()
+  @Transform(({ value }) => (value ? new Date(value) : undefined))
   dateOfBirth?: Date;
 
-  @IsString()
   @IsOptional()
-  gender?: Gender;
+  @IsString()
+  @MaxLength(10)
+  gender?: string;
 
-  @IsString()
   @IsOptional()
+  @IsString()
   bio?: string;
 
-  @IsEnum(UserStatus)
   @IsOptional()
+  @IsEnum(UserStatus)
   status?: UserStatus;
 }
