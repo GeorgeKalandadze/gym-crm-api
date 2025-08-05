@@ -10,6 +10,7 @@ import {
 } from 'class-validator';
 import { Transform } from 'class-transformer';
 import { UserStatus } from '../enum/user.enum';
+import { Match } from 'src/common/decorators';
 
 export class CreateUserDto {
   @IsNotEmpty()
@@ -60,4 +61,9 @@ export class CreateUserDto {
   @IsOptional()
   @IsEnum(UserStatus)
   status?: UserStatus;
+
+  @IsString()
+  @IsNotEmpty()
+  @Match('password', { message: 'Password confirmation must match password' })
+  confirmPassword: string;
 }
