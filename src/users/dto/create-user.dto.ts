@@ -45,7 +45,7 @@ export class CreateUserDto {
 
   @IsOptional()
   @IsDateString()
-  @Transform(({ value }) => (value ? new Date(value) : undefined))
+  @Transform(({ value }) => (value ? new Date(value as string) : undefined))
   dateOfBirth?: Date;
 
   @IsOptional()
